@@ -1,7 +1,7 @@
 import React from "react";
 import {NavigationDots, SocialMedia} from '../components'
 
-const AppWrep = (Component, idName, classNames) => function HOC (){
+const AppWrap = (Component, idName, classNames) => function HOC (){
   return (
     <div id={idName} className={`app__container ${classNames}`}>
         <SocialMedia/>
@@ -17,4 +17,4 @@ const AppWrep = (Component, idName, classNames) => function HOC (){
   )
 }
 
-export default AppWrep
+export default AppWrap
