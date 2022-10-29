@@ -3,7 +3,7 @@ import React,{useState, useEffect} from 'react';
 import {AiFillEye, AiFillGithub} from 'react-icons/ai';
 import {motion} from 'framer-motion';
 import {AppWrap} from '../../wrapper';
-import {urlFor, client } from '../../Client'
+import {urlFor, Client } from '../../Client'
 import './Work.scss';
 
 const Work = () => {
@@ -13,7 +13,7 @@ const Work = () => {
   const [filterWork, setFilterWork] = useState([])
   useEffect(() => {
     const query = '*[_type =="works"]';
-    client.fetch(query)
+    Client.fetch(query)
     .then((data)=>{
       setWorks(data);
       setFilterWork(data);
@@ -64,7 +64,7 @@ const Work = () => {
                       <AiFillEye/>
                     </motion.div>
                   </a>
-                  <a href={work.projectLink} target="_blank" rel='noreferrer'>
+                  <a href={work.codeLink} target="_blank" rel='noreferrer'>
                     <motion.div
                        whileInView={{scale: [0,1]}}
                        whileHover={{scale:[1,0.9]}}
