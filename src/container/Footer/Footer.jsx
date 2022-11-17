@@ -2,23 +2,20 @@ import React,{ useState } from 'react';
 import { images } from '../../constants';
 import { AppWrap, MotionWrap } from '../../wrapper';
 import { Client } from '../../Client';
-
+import { send } from 'emailjs-com';
 import './Footer.scss';
-
-  
-
 
 const Footer = () => {
   const [formData, setFormData] = useState({name: "" , email: ""});
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-
   const { name, email, message } = formData;
 
   const handleChangeInput = (e) =>{
     const {name, value} = e.target;
 
     setFormData({...formData, [name]:value})
+    
   }
 
   const handleSubmit = () =>{
@@ -36,6 +33,20 @@ const Footer = () => {
       setLoading(false);
       setIsFormSubmitted(true);
     })
+
+    send(
+      'service_pt84y4h',
+      'template_xv5hu7t',
+      {name, email , message},
+      'qsXLDxgUiQL1YvoIo'
+    )
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+      })
+      .catch((err) => {
+        console.log('FAILED...', err);
+      });
+
   }
   
   return (
